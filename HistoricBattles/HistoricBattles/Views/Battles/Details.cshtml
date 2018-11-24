@@ -1,0 +1,189 @@
+﻿@model IEnumerable<HistoricBattles.Models.Stage>
+@inject HistoricBattles.Services.BattleServices BattleServices;
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@*<h2>@Model.</h2>*@
+
+<header >
+    <p id="initialD">@Model.Single(x => x.Id == 1).DescriptionG</p>
+</header>
+<div class="container" id="battle">
+    <div class="row">
+        <div class="col-md-1">
+            <img />
+        </div>
+        <div class="col-md-10 col-sm-4" id="article">
+            <img src="~/images/ImagesHome/Bailen.jpg" id="bailenMap" alt="Bailen_battle" title="Plano de Bailen" hidden />
+            <img src="~/images/regimientos/Rgto_fran_art.jpg" id="rgtoartfra" alt="artfra" title="Regimiento ArtilleríaF" hidden />
+            <img src="~/images/regimientos/Rgto_fran_chi.jpg" id="rgtochifra" alt="chifra" title="Regimiento de CaballeríaF" hidden />
+            <img src="~/images/regimientos/Rgto_fran_inf.jpg" id="rgtoinffra" alt="inffra" title="Regimiento de InfanteríaF" hidden />
+            <img src="~/images/regimientos/Rgto_spa_art.jpg" id="rgtoartspa" alt="artspa" title="Regimiento ArtilleríaS" hidden />
+            <img src="~/images/regimientos/Rgto_spa_chiv.jpg" id="rgtochispa" alt="chispa" title="Regimiento de CaballeríaS" hidden />
+            <img src="~/images/regimientos/Rgto_spa_inf.jpg" id="rgtoinfspa" alt="infspa" title="Regimiento de InfanteríaS" hidden />
+            <canvas id="battleMap" width="970" height="500" style="border:2px solid black;"></canvas>
+        </div>
+        <div class="col-md-1">
+            <img />
+        </div>
+    </div>
+</div>
+<div class="container" id="description">
+    <div class="row">
+        <div class="col-md-3 col-sm-1">
+            <p id="asideleft">@Model.Single(x => x.Id == 1).DescriptionE2</p>
+        </div>
+        <div class="col-md-6 col-sm-3">
+
+        </div>
+        <div class="col-md-3 col-sm-1">
+            <p id="asideright">@Model.Single(x => x.Id == 1).DescriptionE1</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <input id="FstStage_btn" type="button" value="Primera Fase" />
+    <script>
+        $('#FstStage_btn').click(function () {
+            $('#initialD').clear();
+            $('#initialD').show("slow", function () {
+                    <p>@Model.Single(x => x.Id == 2).DescriptionG</p>
+                });
+            
+            $('#asideleft').clear();
+            $('#asideleft').show("slow", function () {
+                    <p>@Model.Single(x => x.Id == 2).DescriptionE2</p>
+                });
+            
+            $('#asideright').clear();
+            $('#asideright').show("slow", function () {
+                    <p>@Model.Single(x => x.Id == 2).DescriptionE1</p>
+                });
+            
+        });
+    </script>
+    <input id="SndStage_btn" type="button" value="Segunda Fase" />
+    <script>
+        
+    </script>
+    <input id="TrdStage_btn" type="button" value="Tercera Fase" />
+    <script>
+
+    </script>
+    <input id="FthStage_btn" type="button" value="Cuarta Fase" />
+    <script>
+
+    </script>
+    <input id="FithStage_btn" type="button" value="Quinta Fase" />
+    <script>
+
+    </script>
+</footer>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script>
+    window.onload = function () {
+        var canvas = document.getElementById("battleMap");
+        var ctx = canvas.getContext("2d");
+        var img = document.getElementById("bailenMap");
+        ctx.drawImage(img, 200, 0, 800, 500, 0, 0, 970, 500);
+
+        ctx.font = '24px Comic Sans';
+        ctx.fillStyle = "#ff0000";
+        ctx.fillText('Bailén', 850, 200);
+        ctx.fillText('Haza Walona', 550, 485);
+        ctx.fillText('San Valentín', 550, 25);
+        ctx.fillText('A Ándujar', 15, 300);
+
+        @{
+             List<Regiment> regiments = BattleServices.GetRegimentsDB();
+    
+            @foreach (Regiment regiment in regiments)
+             {
+                <text>ctx.drawImage("~/images/regimientos/</text>@regiment.Image <text>",0,0,72,72,</text>@regiment.PosX <text>,</text>@regiment.PosY <text>,15,15);</text>
+             }
+        }
+
+        
+        
+
+        //var imgArtS = document.getElementById("rgtoartspa");
+        //ctx.drawImage(imgArtS, 0, 0, 72, 72, 670, 160, 15, 15);
+        //ctx.drawImage(imgArtS, 0, 0, 72, 72, 690, 200, 15, 15);
+        //ctx.drawImage(imgArtS, 0, 0, 72, 72, 675, 260, 15, 15);
+
+        //var imgInfS = document.getElementById("rgtoinfspa");
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 610, 200, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 585, 201, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 569, 202, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 667, 326, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 684, 328, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 668, 144, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 685, 127, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 683, 110, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 708, 183, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 688, 217, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 706, 219, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 686, 234, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 673, 276, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 671, 293, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 688, 295, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 669, 309, 15, 15);
+        //ctx.drawImage(imgInfS, 0, 0, 72, 72, 686, 311, 15, 15);
+
+        //var imgChiS = document.getElementById("rgtochispa");
+        //ctx.drawImage(imgChiS, 0, 0, 72, 72, 549, 206, 15, 15);
+        //ctx.drawImage(imgChiS, 0, 0, 72, 72, 530, 210, 15, 15);
+        //ctx.drawImage(imgChiS, 0, 0, 72, 72, 665, 343, 15, 15);
+        //ctx.drawImage(imgChiS, 0, 0, 72, 72, 728, 170, 15, 15);
+        //ctx.drawImage(imgChiS, 0, 0, 72, 72, 724, 238, 15, 15);
+
+        //var imgArtF = document.getElementById("rgtoartfra");
+        //ctx.drawImage(imgArtF, 0, 0, 72, 72, 473, 230, 15, 15);
+
+        //var imgChiF = document.getElementById("rgtochifra");
+        //ctx.drawImage(imgChiF, 0, 0, 72, 72, 490, 241, 15, 15);
+        //ctx.drawImage(imgChiF, 0, 0, 72, 72, 391, 250, 15, 15);
+        //ctx.drawImage(imgChiF, 0, 0, 72, 72, 385, 296, 15, 15);
+        //ctx.drawImage(imgChiF, 0, 0, 72, 72, 369, 302, 15, 15);
+        //ctx.drawImage(imgChiF, 0, 0, 72, 72, 354, 318, 15, 15);
+
+        //var imgInfF = document.getElementById("rgtoinffra");
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 470, 249, 15, 15);
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 451, 252, 15, 15);
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 420, 261, 15, 15);
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 403, 268, 15, 15);
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 360, 279, 15, 15);
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 343, 296, 15, 15);
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 311, 325, 15, 15);
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 294, 330, 15, 15);
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 276, 339, 15, 15);
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 251, 341, 15, 15);
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 235, 345, 15, 15);
+        //ctx.drawImage(imgInfF, 0, 0, 72, 72, 204, 362, 15, 15);
+
+    };
+
+
+
+        //ctx.fillStyle = "#ff0000";
+        //for (let i = 0; i < 10; i++) {
+        //    ctx.fillRect(i* 6, 20, 5, 5)
+        //}
+        //var image = new Image();
+        //image.src = "https://localhost:44316/images/regimientos/Rgto_fran_art.jpg";
+        //image.onload = function () {
+        //    ctx.drawImage(image, 0, 0, 72, 72, 30, 40, 20, 20);
+        //}
+
+
+
+</script>

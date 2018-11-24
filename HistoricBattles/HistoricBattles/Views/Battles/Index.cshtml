@@ -1,0 +1,35 @@
+﻿@model IEnumerable<HistoricBattles.Models.Battle>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Batallas Históricas</h2>
+
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        if (User.HasClaim("admin", "admin"))
+        {
+            <p>
+                <a asp-action="Create">Create New</a>
+            </p>
+        }
+    }
+}
+
+
+<div class="dropdown">
+    <a asp-area="" asp-controller="Battle" asp-action="Index" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Batallas <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+        <li>
+            @foreach (Battle battle in Model)
+            {
+                <a asp-action="Details" asp-route-id="@battle.Id">@battle.Name</a>
+            }
+        </li>
+    </ul>
+</div>
+
+
