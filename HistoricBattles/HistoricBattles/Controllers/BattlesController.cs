@@ -28,7 +28,6 @@ namespace HistoricBattles.Controllers
         }
 
 
-
         // GET: Battles/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -47,6 +46,8 @@ namespace HistoricBattles.Controllers
             List<Stage> stages = battle.Stages.ToList();
             return View(stages);
         }
+
+       
         // GET: Battles/Create
         public IActionResult Create()
         {
