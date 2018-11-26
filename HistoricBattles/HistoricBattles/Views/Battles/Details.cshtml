@@ -1,14 +1,13 @@
-﻿@model IEnumerable<HistoricBattles.Models.Stage>
-@inject HistoricBattles.Services.BattleServices BattleServices;
+﻿@model HistoricBattles.Models.BattleViewModel
+@inject HistoricBattles.Services.BattleServices BattleServices
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    int stageNumber;
 }
 
 <header>
-    <p id="initialD">@Model.First().DescriptionG</p>
+    <p id="initialD">@Model.Stages.First().DescriptionG</p>
 </header>
 <div class="container" id="battle">
     <div class="row">
@@ -16,14 +15,13 @@
             <img />
         </div>
         <div class="col-md-10 col-sm-4" id="article">
-            <img src="~/images/ImagesHome/Bailen.jpg" id="battleMap" alt="Bailen_battle" title="Plano de Bailen" hidden />
             <img src="~/images/regimientos/Rgto_fran_art.jpg" id="rgtoartfra" alt="artfra" title="Regimiento ArtilleríaF" hidden />
             <img src="~/images/regimientos/Rgto_fran_chi.jpg" id="rgtochifra" alt="chifra" title="Regimiento de CaballeríaF" hidden />
             <img src="~/images/regimientos/Rgto_fran_inf.jpg" id="rgtoinffra" alt="inffra" title="Regimiento de InfanteríaF" hidden />
             <img src="~/images/regimientos/Rgto_spa_art.jpg" id="rgtoartspa" alt="artspa" title="Regimiento ArtilleríaS" hidden />
             <img src="~/images/regimientos/Rgto_spa_chiv.jpg" id="rgtochispa" alt="chispa" title="Regimiento de CaballeríaS" hidden />
             <img src="~/images/regimientos/Rgto_spa_inf.jpg" id="rgtoinfspa" alt="infspa" title="Regimiento de InfanteríaS" hidden />
-            <canvas id="canvas" width="970" height="500" style="border:2px solid black;"></canvas>
+            <canvas id="canvas" width="1070" height="600" style="border:2px solid black;"></canvas>
         </div>
         <div class="col-md-1">
             <img />
@@ -33,13 +31,13 @@
 <div class="container" id="description">
     <div class="row">
         <div class="col-md-3 col-sm-1">
-            <p id="asideleft">@Model.First().DescriptionE2</p>
+            <p id="asideleft">@Model.Stages.First().DescriptionE2</p>
         </div>
         <div class="col-md-6 col-sm-3">
 
         </div>
         <div class="col-md-3 col-sm-1">
-            <p id="asideright">@Model.First().DescriptionE1</p>
+            <p id="asideright">@Model.Stages.First().DescriptionE1</p>
         </div>
     </div>
 </div>
@@ -56,22 +54,25 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.js" charset="iso-8859-1"></script>
 <script>
     var stageNumber = 1;
 
     window.onload = function () {
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
-        var mapImg = document.getElementById("battleMap");
+        //var mapImg = document.getElementById("battleMap");
 
-        
-        drawBattleStage(stageNumber, ctx, mapImg);
+        var mapImg = new Image();
+        mapImg.src = "@Url.Content("~/images/ImagesHome/")@Model.Image";
+        mapImg.onload = function () {
+            drawBattleStage(stageNumber, ctx, mapImg);
+        };
 
         $('#FstStage_btn').click(function () {
-            $('#initialD').text( "@Model.ElementAt(1).DescriptionG");
-            $('#asideleft').text("@Model.ElementAt(1).DescriptionE2");
-            $('#asideright').text("@Model.ElementAt(1).DescriptionE1");
+            $('#initialD').text( "@Model.Stages.ElementAt(1).DescriptionG");
+            $('#asideleft').text("@Model.Stages.ElementAt(1).DescriptionE2");
+            $('#asideright').text("@Model.Stages.ElementAt(1).DescriptionE1");
 
             drawBattleStage(2, ctx, mapImg);
             //stageNumber = 2; // para poder hacer con
@@ -79,9 +80,9 @@
         });
 
         $('#SndStage_btn').click(function () {
-            $('#initialD').text( "@Model.ElementAt(2).DescriptionG");
-            $('#asideleft').text("@Model.ElementAt(2).DescriptionE2");
-            $('#asideright').text("@Model.ElementAt(2).DescriptionE1");
+            $('#initialD').text( "@Model.Stages.ElementAt(2).DescriptionG");
+            $('#asideleft').text("@Model.Stages.ElementAt(2).DescriptionE2");
+            $('#asideright').text("@Model.Stages.ElementAt(2).DescriptionE1");
 
             drawBattleStage(3, ctx, mapImg);
             //stageNumber = 1;// para poder hacer con
@@ -89,25 +90,25 @@
         });
 
         $('#TrdStage_btn').click(function () {
-            $('#initialD').text( "@Model.ElementAt(3).DescriptionG");
-            $('#asideleft').text("@Model.ElementAt(3).DescriptionE2");
-            $('#asideright').text("@Model.ElementAt(3).DescriptionE1");
+            $('#initialD').text( "@Model.Stages.ElementAt(3).DescriptionG");
+            $('#asideleft').text("@Model.Stages.ElementAt(3).DescriptionE2");
+            $('#asideright').text("@Model.Stages.ElementAt(3).DescriptionE1");
 
             drawBattleStage(4, ctx, mapImg);
         });
 
         $('#FthStage_btn').click(function () {
-            $('#initialD').text( "@Model.ElementAt(4).DescriptionG");
-            $('#asideleft').text("@Model.ElementAt(4).DescriptionE2");
-            $('#asideright').text("@Model.ElementAt(4).DescriptionE1");
+            $('#initialD').text( "@Model.Stages.ElementAt(4).DescriptionG");
+            $('#asideleft').text("@Model.Stages.ElementAt(4).DescriptionE2");
+            $('#asideright').text("@Model.Stages.ElementAt(4).DescriptionE1");
 
             drawBattleStage(5, ctx, mapImg);
         });
 
         $('#FithStage_btn').click(function () {
-            $('#initialD').text( "@Model.ElementAt(5).DescriptionG");
-            $('#asideleft').text("@Model.ElementAt(5).DescriptionE2");
-            $('#asideright').text("@Model.ElementAt(5).DescriptionE1");
+            $('#initialD').text( "@Model.Stages.ElementAt(5).DescriptionG");
+            $('#asideleft').text("@Model.Stages.ElementAt(5).DescriptionE2");
+            $('#asideright').text("@Model.Stages.ElementAt(5).DescriptionE1");
 
              drawBattleStage(6, ctx, mapImg);
         });
@@ -133,7 +134,7 @@
 
     function loadRegiments() {
         @{
-            List<Regiment> regiments = BattleServices.GetRegimentsDB();
+            List<Regiment> regiments = BattleServices.GetRegimentsDB(Model.BattleId);
         }
         var stage1Regiments = [
         @{
@@ -219,7 +220,7 @@
     }
 
     function drawMap(ctx, mapImg) {
-        ctx.drawImage(mapImg, 200, 0, 800, 500, 0, 0, 970, 500);
+        ctx.drawImage(mapImg, 0, 0, 1070, 600, 0, 0, 1070, 600);
         ctx.font = '24px Comic Sans';
         ctx.fillStyle = "#ff0000";
         ctx.fillText('Bailén', 850, 200);

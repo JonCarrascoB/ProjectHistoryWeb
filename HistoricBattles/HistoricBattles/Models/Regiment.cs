@@ -17,5 +17,6 @@ namespace HistoricBattles.Models
         public int PosX { get; set; }
         public int PosY { get; set; }
         public int StageID { get; set; }
+        public int BattleId { get; set; }
     }
 }

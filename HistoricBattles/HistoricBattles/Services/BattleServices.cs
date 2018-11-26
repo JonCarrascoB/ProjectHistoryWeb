@@ -16,10 +16,15 @@ namespace HistoricBattles.Services
         {
             _context = context;
         }
-        public List<Regiment> GetRegimentsDB()
+        public List<Regiment> GetRegimentsDB(int battleId)
         {
-            List<Regiment> regiments = _context.Regiments.ToList();
+            List<Regiment> regiments = _context.Regiments.Where(x=>x.BattleId == battleId).ToList();
             return regiments;
+        }
+        public List<Battle> GetBattlesBD()
+        {
+            List<Battle> battles = _context.Battles.ToList();
+            return battles;
         }
     }
 }

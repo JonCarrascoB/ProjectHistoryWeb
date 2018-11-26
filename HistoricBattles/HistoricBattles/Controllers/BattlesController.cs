@@ -43,8 +43,11 @@ namespace HistoricBattles.Controllers
                 return NotFound();
             }
 
-            List<Stage> stages = battle.Stages.ToList();
-            return View(stages);
+            BattleViewModel battleViewModel = new BattleViewModel();
+            battleViewModel.Stages = battle.Stages.ToList();
+            battleViewModel.Image = battle.Image;
+            battleViewModel.BattleId = (int)id;
+            return View(battleViewModel);
         }
 
        

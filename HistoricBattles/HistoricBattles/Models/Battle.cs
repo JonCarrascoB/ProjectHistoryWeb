@@ -14,6 +14,8 @@ namespace HistoricBattles.Models
         public string Localization { get; set; }
         public int Year { get; set; }
         public List<Stage> Stages { get; set; }
+        public List<Regiment> Regiments { get; set; }
+        public string Image { get; set; }
         
     }
 }

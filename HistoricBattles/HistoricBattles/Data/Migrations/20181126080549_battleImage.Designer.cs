@@ -4,14 +4,16 @@ using HistoricBattles.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HistoricBattles.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181126080549_battleImage")]
+    partial class battleImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,7 +135,7 @@ namespace HistoricBattles.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BattleId");
+                    b.Property<int?>("BattleId");
 
                     b.Property<string>("Country");
 
@@ -275,8 +277,7 @@ namespace HistoricBattles.Data.Migrations
                 {
                     b.HasOne("HistoricBattles.Models.Battle")
                         .WithMany("Regiments")
-                        .HasForeignKey("BattleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("BattleId");
 
                     b.HasOne("HistoricBattles.Models.Stage")
                         .WithMany("Regiments")
