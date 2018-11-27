@@ -13,12 +13,18 @@ body {
 }
 
 /* Carousel */
-
+.imagebat {
+    width: 100%;
+}
+    .imagebat img {
+        align-content: center;
+        width: 1170px;
+        height: 600px;
+    }
 
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
-    align-content:center;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
@@ -30,29 +36,55 @@ body {
 #qrCode {
     margin: 15px;
 }
-.contaner{
-    border-top:50px;
-    margin-top:50px;
-    padding-top:50px;
+.header {
+    margin-top: 25px;
+    border-right: 20px;
+    border-left: 20px;
+    border-color: rgb(139, 180, 21);
+    border-style: dashed;
+    padding-top: 10px;
+    align-items: center;
 }
-.row{
+.header p{
+    margin-left:10px;
+    margin-right:10px;
+    text-align:justify;
+}
+.battlerow1{
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: -50px;
-    margin-right: -50px;
+    margin-right: -100px;
 }
-.col-md-1{
+.battlecolmd1{
     width: 5%;
 }
-.col-md-3{
+.battlecolmd3{
     width: 25%;
+    margin-top:20px;
+    margin-bottom:10px;
+    margin-left:20px;
     text-align:justify;
 }
-.col-md-6 {
+.battlecolmd6 {
     width: 45%;
 }
-.col-md-10{
+.battlecolmd10{
     width:85%;
+}
+.battlerow2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-right: 20px;
+    border-left: 20px;
+    margin-left: -100px;
+    margin-right: -100px;
+    border-color:rgb(139, 180, 21);
+    border-style:dashed;
+}
+.footer{
+    align-content:center;
+    margin-left:310px;
 }
 
 /* Hide/rearrange for smaller screens */

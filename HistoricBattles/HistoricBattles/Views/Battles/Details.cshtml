@@ -6,15 +6,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<header>
+<header class="container header">
     <p id="initialD">@Model.Stages.First().DescriptionG</p>
 </header>
-<div class="container" id="battle">
-    <div class="row">
-        <div class="col-md-1">
-            <img />
-        </div>
-        <div class="col-md-10 col-sm-4" id="article">
+<div class="container battle" id="battle">
+    <div class="row battlerow1">
+        <div class="col-md-1 battlecolmd1"></div>
+        <div class="col-md-10 col-sm-4 battlecolmd10" id="article">
             <img src="~/images/regimientos/Rgto_fran_art.jpg" id="rgtoartfra" alt="artfra" title="Regimiento ArtilleríaF" hidden />
             <img src="~/images/regimientos/Rgto_fran_chi.jpg" id="rgtochifra" alt="chifra" title="Regimiento de CaballeríaF" hidden />
             <img src="~/images/regimientos/Rgto_fran_inf.jpg" id="rgtoinffra" alt="inffra" title="Regimiento de InfanteríaF" hidden />
@@ -23,28 +21,29 @@
             <img src="~/images/regimientos/Rgto_spa_inf.jpg" id="rgtoinfspa" alt="infspa" title="Regimiento de InfanteríaS" hidden />
             <img src="~/images/regimientos/Rgtoinfmus.jpg" id="rgtoinfmus" alt="infmus" title="Regimiento de InfanteríaM" hidden />
             <img src="~/images/regimientos/Rgtochimus.jpg" id="rgtochimus" alt="chimus" title="Regimiento de CaballeríaM" hidden />
+            <img src="~/images/regimientos/Rgtoinfbri.jpg" id="rgtoinfbri" alt="infbri" title="Regimiento de InfanteríaB" hidden />
+            <img src="~/images/regimientos/Rgtoartbri.jpg" id="rgtoartbri" alt="artbri" title="Regimiento de ArtilleríaB" hidden />
+            @*<img src="~/images/regimientos/navbri.jpg" id="navbri" alt="navbri" title="NavioB" hidden />*@
+            <img src="~/images/regimientos/navspa.jpg" id="navspa" alt="navspa" title="NavioS" hidden />
+
             <canvas id="canvas" width="1070" height="600" style="border:2px solid black;"></canvas>
         </div>
-        <div class="col-md-1">
-            <img />
-        </div>
+        <div class="col-md-1 battlecolmd1"></div>
     </div>
 </div>
-<div class="container" id="description">
-    <div class="row">
-        <div class="col-md-3 col-sm-1">
+<div class="container description" id="description">
+    <div class="row battlerow2">
+        <div class="col-md-3 battlecolmd3 col-sm-1">
             <p id="asideleft">@Model.Stages.First().DescriptionE2</p>
         </div>
-        <div class="col-md-6 col-sm-3">
-
-        </div>
-        <div class="col-md-3 col-sm-1">
+        <div class="col-md-6 col-sm-3 battlecolmd6"></div>
+        <div class="col-md-3 col-sm-1 battlecolmd3">
             <p id="asideright">@Model.Stages.First().DescriptionE1</p>
         </div>
     </div>
 </div>
 
-<footer>
+<footer class="container footer">
     <input id="FstStage_btn" type="button" value="Primera Fase" />
     <input id="SndStage_btn" type="button" value="Segunda Fase" />
     <input id="TrdStage_btn" type="button" value="Tercera Fase" />
@@ -223,12 +222,6 @@
 
     function drawMap(ctx, mapImg) {
         ctx.drawImage(mapImg, 0, 0, 1070, 600, 0, 0, 1070, 600);
-        //ctx.font = '24px Comic Sans';
-        //ctx.fillStyle = "#ff0000";
-        //ctx.fillText('Bailén', 850, 200);
-        //ctx.fillText('Haza Walona', 550, 485);
-        //ctx.fillText('San Valentín', 550, 25);
-        //ctx.fillText('A Ándujar', 15, 300);
     }
 
     function drawRegiments(ctx, regiments, stageNumber) {
@@ -251,7 +244,20 @@
                     ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 } else if (regiment.image == "Rgtochimus.jpg") {
                     ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoinfbri.jpg") {
+                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoartbri.jpg") {
+                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "navbri.jpg") {
+                    @*var regImg = regiment.image;
+                    regImg.src = "@Url.Content("~/images/regimientos/")@regiment.image";
+                    regImg.onload = function () {*@
+                        ctx.drawImage(regImg, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                      //};
+                } else if (regiment.image == "navspa.jpg") {
+                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 }
+
 
             });
         } else if (stageNumber == 2) {
@@ -273,6 +279,14 @@
                     ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 } else if (regiment.image == "Rgtochimus.jpg") {
                     ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoinfbri.jpg") {
+                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoartbri.jpg") {
+                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "navbri.jpg") {
+                    ctx.drawImage(navbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "navspa.jpg") {
+                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 }
             });
         } else if (stageNumber == 3) {
@@ -294,6 +308,14 @@
                     ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 } else if (regiment.image == "Rgtochimus.jpg") {
                     ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoinfbri.jpg") {
+                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoartbri.jpg") {
+                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "navbri.jpg") {
+                    ctx.drawImage(navbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "navspa.jpg") {
+                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 }
             });
         } else if (stageNumber == 4) {
@@ -315,6 +337,14 @@
                     ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 } else if (regiment.image == "Rgtochimus.jpg") {
                     ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoinfbri.jpg") {
+                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoartbri.jpg") {
+                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "navbri.jpg") {
+                    ctx.drawImage(navbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "navspa.jpg") {
+                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 }
             });
         } else if (stageNumber == 5) {
@@ -336,6 +366,14 @@
                     ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 } else if (regiment.image == "Rgtochimus.jpg") {
                     ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoinfbri.jpg") {
+                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoartbri.jpg") {
+                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "navbri.jpg") {
+                    ctx.drawImage(navbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "navspa.jpg") {
+                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 }
             });
         } else if (stageNumber == 6) {
@@ -357,6 +395,14 @@
                     ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 } else if (regiment.image == "Rgtochimus.jpg") {
                     ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoinfbri.jpg") {
+                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "Rgtoartbri.jpg") {
+                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "navbri.jpg") {
+                    ctx.drawImage(navbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                } else if (regiment.image == "navspa.jpg") {
+                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
                 }
             });
         }
