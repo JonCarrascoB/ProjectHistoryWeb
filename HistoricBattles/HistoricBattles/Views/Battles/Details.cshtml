@@ -13,19 +13,6 @@
     <div class="row battlerow1">
         <div class="col-md-1 battlecolmd1"></div>
         <div class="col-md-10 col-sm-4 battlecolmd10" id="article">
-            <img src="~/images/regimientos/Rgto_fran_art.jpg" id="rgtoartfra" alt="artfra" title="Regimiento ArtilleríaF" hidden />
-            <img src="~/images/regimientos/Rgto_fran_chi.jpg" id="rgtochifra" alt="chifra" title="Regimiento de CaballeríaF" hidden />
-            <img src="~/images/regimientos/Rgto_fran_inf.jpg" id="rgtoinffra" alt="inffra" title="Regimiento de InfanteríaF" hidden />
-            <img src="~/images/regimientos/Rgto_spa_art.jpg" id="rgtoartspa" alt="artspa" title="Regimiento ArtilleríaS" hidden />
-            <img src="~/images/regimientos/Rgto_spa_chiv.jpg" id="rgtochispa" alt="chispa" title="Regimiento de CaballeríaS" hidden />
-            <img src="~/images/regimientos/Rgto_spa_inf.jpg" id="rgtoinfspa" alt="infspa" title="Regimiento de InfanteríaS" hidden />
-            <img src="~/images/regimientos/Rgtoinfmus.jpg" id="rgtoinfmus" alt="infmus" title="Regimiento de InfanteríaM" hidden />
-            <img src="~/images/regimientos/Rgtochimus.jpg" id="rgtochimus" alt="chimus" title="Regimiento de CaballeríaM" hidden />
-            <img src="~/images/regimientos/Rgtoinfbri.jpg" id="rgtoinfbri" alt="infbri" title="Regimiento de InfanteríaB" hidden />
-            <img src="~/images/regimientos/Rgtoartbri.jpg" id="rgtoartbri" alt="artbri" title="Regimiento de ArtilleríaB" hidden />
-            @*<img src="~/images/regimientos/navbri.jpg" id="navbri" alt="navbri" title="NavioB" hidden />*@
-            <img src="~/images/regimientos/navspa.jpg" id="navspa" alt="navspa" title="NavioS" hidden />
-
             <canvas id="canvas" width="1070" height="600" style="border:2px solid black;"></canvas>
         </div>
         <div class="col-md-1 battlecolmd1"></div>
@@ -228,185 +215,59 @@
         if (stageNumber == 1) {
             var regimentsToDraw = regiments.stage1Regiments;
             regimentsToDraw.forEach(function (regiment) {
-                if (regiment.image == "Rgto_fran_art.jpg") {
-                    ctx.drawImage(rgtoartfra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_chi.jpg") {
-                    ctx.drawImage(rgtochifra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_inf.jpg") {
-                    ctx.drawImage(rgtoinffra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_art.jpg") {
-                    ctx.drawImage(rgtoartspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_chiv.jpg") {
-                    ctx.drawImage(rgtochispa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_inf.jpg") {
-                    ctx.drawImage(rgtoinfspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfmus.jpg") {
-                    ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtochimus.jpg") {
-                    ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfbri.jpg") {
-                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoartbri.jpg") {
-                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "navbri.jpg") {
-                    @*var regImg = regiment.image;
-                    regImg.src = "@Url.Content("~/images/regimientos/")@regiment.image";
-                    regImg.onload = function () {*@
-                        ctx.drawImage(regImg, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                      //};
-                } else if (regiment.image == "navspa.jpg") {
-                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                }
-
-
+                var regImg = new Image();
+                regImg.src = "@Url.Content("~/images/regimientos/")"+regiment.image;
+                regImg.onload = function () {
+                    ctx.drawImage(regImg, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                    };
             });
         } else if (stageNumber == 2) {
             var regimentsToDraw = regiments.stage2Regiments;
             regimentsToDraw.forEach(function (regiment) {
-                if (regiment.image == "Rgto_fran_art.jpg") {
-                    ctx.drawImage(rgtoartfra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_chi.jpg") {
-                    ctx.drawImage(rgtochifra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_inf.jpg") {
-                    ctx.drawImage(rgtoinffra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_art.jpg") {
-                    ctx.drawImage(rgtoartspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_chiv.jpg") {
-                    ctx.drawImage(rgtochispa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_inf.jpg") {
-                    ctx.drawImage(rgtoinfspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfmus.jpg") {
-                    ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtochimus.jpg") {
-                    ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfbri.jpg") {
-                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoartbri.jpg") {
-                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "navbri.jpg") {
-                    ctx.drawImage(navbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "navspa.jpg") {
-                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                }
+                    var regImg = new Image();
+                    regImg.src = "@Url.Content("~/images/regimientos/")"+regiment.image;
+                    regImg.onload = function () {
+                        ctx.drawImage(regImg, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                      };
             });
         } else if (stageNumber == 3) {
             var regimentsToDraw = regiments.stage3Regiments;
             regimentsToDraw.forEach(function (regiment) {
-                if (regiment.image == "Rgto_fran_art.jpg") {
-                    ctx.drawImage(rgtoartfra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_chi.jpg") {
-                    ctx.drawImage(rgtochifra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_inf.jpg") {
-                    ctx.drawImage(rgtoinffra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_art.jpg") {
-                    ctx.drawImage(rgtoartspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_chiv.jpg") {
-                    ctx.drawImage(rgtochispa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_inf.jpg") {
-                    ctx.drawImage(rgtoinfspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfmus.jpg") {
-                    ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtochimus.jpg") {
-                    ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfbri.jpg") {
-                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoartbri.jpg") {
-                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "navbri.jpg") {
-                    ctx.drawImage(navbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "navspa.jpg") {
-                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                }
+                var regImg = new Image();
+                    regImg.src = "@Url.Content("~/images/regimientos/")"+regiment.image;
+                    regImg.onload = function () {
+                        ctx.drawImage(regImg, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                      };
             });
         } else if (stageNumber == 4) {
             var regimentsToDraw = regiments.stage4Regiments;
             regimentsToDraw.forEach(function (regiment) {
-                if (regiment.image == "Rgto_fran_art.jpg") {
-                    ctx.drawImage(rgtoartfra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_chi.jpg") {
-                    ctx.drawImage(rgtochifra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_inf.jpg") {
-                    ctx.drawImage(rgtoinffra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_art.jpg") {
-                    ctx.drawImage(rgtoartspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_chiv.jpg") {
-                    ctx.drawImage(rgtochispa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_inf.jpg") {
-                    ctx.drawImage(rgtoinfspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfmus.jpg") {
-                    ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtochimus.jpg") {
-                    ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfbri.jpg") {
-                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoartbri.jpg") {
-                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "navbri.jpg") {
-                    ctx.drawImage(navbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "navspa.jpg") {
-                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                }
+                    var regImg = new Image();
+                    regImg.src = "@Url.Content("~/images/regimientos/")"+regiment.image;
+                    regImg.onload = function () {
+                        ctx.drawImage(regImg, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                    };
             });
         } else if (stageNumber == 5) {
             var regimentsToDraw = regiments.stage5Regiments;
             regimentsToDraw.forEach(function (regiment) {
-                if (regiment.image == "Rgto_fran_art.jpg") {
-                    ctx.drawImage(rgtoartfra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_chi.jpg") {
-                    ctx.drawImage(rgtochifra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_inf.jpg") {
-                    ctx.drawImage(rgtoinffra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_art.jpg") {
-                    ctx.drawImage(rgtoartspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_chiv.jpg") {
-                    ctx.drawImage(rgtochispa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_inf.jpg") {
-                    ctx.drawImage(rgtoinfspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfmus.jpg") {
-                    ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtochimus.jpg") {
-                    ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfbri.jpg") {
-                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoartbri.jpg") {
-                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "navbri.jpg") {
-                    ctx.drawImage(navbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "navspa.jpg") {
-                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                }
+                    var regImg = new Image();
+                    regImg.src = "@Url.Content("~/images/regimientos/")"+regiment.image;
+                    regImg.onload = function () {
+                        ctx.drawImage(regImg, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                    };
             });
         } else if (stageNumber == 6) {
             var regimentsToDraw = regiments.stage6Regiments;
             regimentsToDraw.forEach(function (regiment) {
-                if (regiment.image == "Rgto_fran_art.jpg") {
-                    ctx.drawImage(rgtoartfra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_chi.jpg") {
-                    ctx.drawImage(rgtochifra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_fran_inf.jpg") {
-                    ctx.drawImage(rgtoinffra, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_art.jpg") {
-                    ctx.drawImage(rgtoartspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_chiv.jpg") {
-                    ctx.drawImage(rgtochispa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgto_spa_inf.jpg") {
-                    ctx.drawImage(rgtoinfspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfmus.jpg") {
-                    ctx.drawImage(rgtoinfmus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtochimus.jpg") {
-                    ctx.drawImage(rgtochimus, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoinfbri.jpg") {
-                    ctx.drawImage(rgtoinfbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "Rgtoartbri.jpg") {
-                    ctx.drawImage(rgtoartbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "navbri.jpg") {
-                    ctx.drawImage(navbri, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                } else if (regiment.image == "navspa.jpg") {
-                    ctx.drawImage(navspa, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
-                }
+                   var regImg = new Image();
+                    regImg.src = "@Url.Content("~/images/regimientos/")"+regiment.image;
+                    regImg.onload = function () {
+                        ctx.drawImage(regImg, 0, 0, 72, 72, regiment.PosX, regiment.PosY, 15, 15);
+                    };
             });
         }
     }
-
+   
 </script>
 

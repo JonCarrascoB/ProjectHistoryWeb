@@ -3,8 +3,15 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url('../images/ImagesHome/FondoB.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
-
+.conttotal{
+    background-color: rgba(213, 226, 199, 0.3);
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -44,11 +51,13 @@ body {
     border-style: dashed;
     padding-top: 10px;
     align-items: center;
+    background-color:rgba(185, 209, 164, 0.9);
 }
 .header p{
     margin-left:10px;
     margin-right:10px;
     text-align:justify;
+    color:rgb(11, 56, 13);
 }
 .battlerow1{
     margin-top: 10px;
@@ -59,12 +68,13 @@ body {
 .battlecolmd1{
     width: 5%;
 }
-.battlecolmd3{
+.battlecolmd3 {
     width: 25%;
-    margin-top:20px;
-    margin-bottom:10px;
-    margin-left:20px;
-    text-align:justify;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    text-align: justify;
+    color: rgb(11, 56, 13);
 }
 .battlecolmd6 {
     width: 45%;
@@ -79,12 +89,33 @@ body {
     border-left: 20px;
     margin-left: -100px;
     margin-right: -100px;
-    border-color:rgb(139, 180, 21);
-    border-style:dashed;
+    border-color: rgb(139, 180, 21);
+    background-color: rgba(185, 209, 164, 0.9);
+    border-style: dashed;
+    
 }
 .footer{
     align-content:center;
     margin-left:310px;
+}
+
+.regimentNew {
+    border-right: 20px;
+    border-left: 20px;
+    border-color: rgb(139, 180, 21);
+    border-style: dashed;
+}
+.homePar {
+    border-right: 20px;
+    border-left: 20px;
+    border-color: rgb(139, 180, 21);
+    border-style: dashed;
+    background-color: rgba(185, 209, 164, 0.9);
+    color: rgb(11, 56, 13);
+    text-align: justify;
+}
+.bodytotal {
+    background-color: rgba(185, 209, 164, 0.9);
 }
 
 /* Hide/rearrange for smaller screens */

@@ -15,5 +15,6 @@ namespace HistoricBattles.Models
         public string DescriptionE1 { get; set; }
         public string DescriptionE2 { get; set; }
         public List<Regiment> Regiments { get; set; }
+        public int BattleId { get; set; }
     }
 }

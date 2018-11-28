@@ -54,13 +54,13 @@ namespace HistoricBattles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Type,Country,Image")] Regiment regiment)
+        public async Task<IActionResult> Create([Bind("Id,Name,Type,Country,Image,PosX,PosY,BattleId,StageID")] Regiment regiment)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(regiment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Create));
             }
             return View(regiment);
         }

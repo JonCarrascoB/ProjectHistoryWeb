@@ -1,5 +1,6 @@
 ﻿@model HistoricBattles.Models.Regiment
 
+
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,10 +10,35 @@
 
 <h4>Regiment</h4>
 <hr />
-<div class="row">
+<div class="row regimentNew">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StageID" class="control-label"></label>
+                <select asp-for="StageID" class="form-control">
+                    <option value="1">Fase Inicial</option>
+                    <option value="2">Primera Fase</option>
+                    <option value="3">Segunda Fase</option>
+                    <option value="4">Tercera Fase</option>
+                    <option value="5">Cuarta Fase</option>
+                    <option value="6">Quinta Fase</option>
+                </select>
+                <span asp-validation-for="StageID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BattleId" class="control-label"></label>
+                <select asp-for="BattleId" class="form-control">
+                    <option value="1">Bailen</option>
+                    <option value="2">Navas de Tolosa</option>
+                    <option value="3">Cartagena de Indias</option>
+                    <option value="5">San Quintin</option>
+                    <option value="7">Pavía</option>
+                    <option value="8">Saigon</option>
+                    <option value="9">Pensacola</option>
+                </select>
+                <span asp-validation-for="BattleId" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -36,8 +62,25 @@
             </div>
             <div class="form-group">
                 <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
+                <select asp-for="Image" class="form-control">
+                    <option value="navbri.jpg">Navio Británico/Inglés</option>
+                    <option value="navspa.jpg">Navio Español</option>
+                    <option value="navfra.jpg">Navio Frances</option>
+                    <option value="navmus.jpg">Navio Musulman/Turco</option>
+                    <option value="Rgtochibri.jpg">Caballería Británica</option>
+                    <option value="Rgto_spa_chiv.jpg">Caballería Española</option>
+                    <option value="Rgto_fran_chi.jpg">Caballería Francesa</option>
+                    <option value="Rgtochimus.jpg">Caballería Musulmana/Turca</option>
+                    <option value="Rgtoartbri.jpg">Artillería Británica</option>
+                    <option value="Rgto_spa_art.jpg">Artillería Española</option>
+                    <option value="Rgto_fran_art.jpg">Artillería Francesa</option>
+                    <option value="Rgtoartmus.jpg">Artillería Musulmana/Turca</option>
+                    <option value="Rgtoinfbri.jpg">Infantería Británica</option>
+                    <option value="Rgto_spa_inf.jpg">Infantería Española</option>
+                    <option value="Rgto_fran_inf.jpg">Infantería Francesa</option>
+                    <option value="Rgtoinfmus.jpg">Infantería Musulmana/Turca</option>
+                </select>
+                <span asp-validation-for="Type" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PosX" class="control-label"></label>
@@ -51,14 +94,20 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
+                <input type="button" value="Back" onclick="history.back()" class="btn btn-default" />
             </div>
         </form>
+    </div>
+    <div class="col-md-8">
+        
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    @*<a asp-action="Index">Back to List</a>*@
 </div>
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

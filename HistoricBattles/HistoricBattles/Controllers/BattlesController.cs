@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HistoricBattles.Data;
 using HistoricBattles.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace HistoricBattles.Controllers
 {
@@ -62,17 +63,19 @@ namespace HistoricBattles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Localization,Year")] Battle battle)
+        public async Task<IActionResult> Create([Bind("Id,Name,Localization,Year,Image")] Battle battle)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(battle);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Stages");
+                //return RedirectToAction(nameof(Index));
             }
             return View(battle);
         }
 
+       
         // GET: Battles/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

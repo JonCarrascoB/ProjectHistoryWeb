@@ -28,21 +28,49 @@
                 <input asp-for="Year" class="form-control" />
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div action="" method="post" enctype="multipart/form-data">
+                <fieldset>
+                    <legend> Upload Image </legend>
+                    <label asp-for="Image">Image</label>
+                    <input type="file" name="Image" />
+                    <br />
+                    <input type="submit" value="Upload" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </fieldset>
+            </div>
+            @*<script>
+                @{  Image photo = null;
+                    var newFileName = "";
+                    var imagePath = "";
+
+                    if (IsPost)
+                    {
+                        photo = WebImage.GetImageFromRequest();
+                        if (photo != null)
+                        {
+                            newFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(photo.FileName);
+                            imagePath = @"" + newFileName;
+                            photo.Save(@"~\" + imagePath);
+                        }
+                    }
+                }
+            </script>*@
+
+            @*<div class="form-group">
                 <label asp-for="Image" class="control-label"></label>
                 <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
+            </div>*@
 
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
+                <input type="button" value="Back" onclick="history.back()" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    @*<a asp-action="Index">Back to List</a>*@
 </div>
 
 @section Scripts {

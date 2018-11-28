@@ -19,6 +19,19 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="BattleId" class="control-label"></label>
+                <select asp-for="BattleId" class="form-control">
+                    <option value="1">Bailen</option>
+                    <option value="2">Navas de Tolosa</option>
+                    <option value="3">Cartagena de Indias</option>
+                    <option value="5">San Quintin</option>
+                    <option value="7">Pavía</option>
+                    <option value="8">Saigon</option>
+                    <option value="9">Pensacola</option>
+                </select>
+                <span asp-validation-for="BattleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DescriptionG" class="control-label"></label>
                 <input asp-for="DescriptionG" class="form-control" />
                 <span asp-validation-for="DescriptionG" class="text-danger"></span>
@@ -34,8 +47,8 @@
                 <span asp-validation-for="DescriptionE2" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="button" value="Regiment" class="btn btn-default"/>
                 <input type="submit" value="Create" class="btn btn-default" />
+                <input type="button" value="Back" onclick="history.back()" class="btn btn-default" />
             </div>
         </form>
     </div>
